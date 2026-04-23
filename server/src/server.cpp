@@ -75,6 +75,7 @@ void Server::handleClient(int client_socket){
 
   std::string res = response.str();
 
+  send(client_socket,res.data(),res.length(),0);
   
 
 };

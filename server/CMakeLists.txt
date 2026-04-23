@@ -4,4 +4,4 @@ project(FtpBackend)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(server src/server.cpp)
+add_executable(server src/main.cpp)

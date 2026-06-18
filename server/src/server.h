@@ -1,4 +1,5 @@
 #pragma once
+#include "http/http_response.h"
 #include <string>
 
 class Server {
@@ -9,5 +10,5 @@ public:
 private:
   int port;
   void handleClient(int client_socket);
-  std::string handleRequest(const std::string& request);
+  HttpResponse handleRequest(const std::string& request);
 };

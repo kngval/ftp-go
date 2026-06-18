@@ -3,6 +3,7 @@
 #include <iostream>
 #include <netinet/in.h>
 #include <sys/socket.h>
+#include <sys/types.h>
 #include <unistd.h>
 #include <sstream>
 
@@ -21,7 +22,7 @@ void Server::start() {
 
   sockaddr_in addr;
   addr.sin_family = AF_INET;
-  addr.sin_port = htons(8080);
+  addr.sin_port = htons(port);
   addr.sin_addr.s_addr = INADDR_ANY;
 
   int bind_res = bind(server_fd, (struct sockaddr *)&addr, sizeof(addr));
@@ -64,18 +65,32 @@ void Server::handleClient(int client_socket){
 
   std::cout << "Request : \n" << request << '\n';
 
-  std::string body = handleRequest(request);
+  HttpResponse httpResponse = handleRequest(request);
 
   std::stringstream response;
   response << "HTTP/1.1 200 OK\r\n";
   response << "Content-Type: text/plain\r\n";
-  response << "Content-Length: " << body.length() << "\r\n";
+  response << "Content-Length: " << httpResponse.responseBody.length() << "\r\n";
   response << "\r\n";
-  response << body;
+  response << httpResponse.responseBody;
 
   std::string res = response.str();
 
-  send(client_socket,res.data(),res.length(),0);
+  ssize_t bytesSent = send(client_socket,res.data(),res.length(),0);
+
+  if(bytesSent < 0){
+    std::cerr << "Send failed : " << std::strerror(errno) << '\n';
+  }
+
+  close(client_socket);
   
 
 };
+
+ HttpResponse Server::handleRequest(const std::string& request){
+
+  if(request.find("GET /test") != std::string::npos){
+    return {200,"working","chaching"};
+  }
+  return {404,"Not Found",""};
+}

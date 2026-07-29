@@ -1,11 +1,11 @@
 import './App.css'
-
+import FTPPane from './panels/FTPPane'
 function App() {
 
   return (
     <>
-      <div>
-        <h1>Hello</h1>
+      <div className='main'>
+        <FTPPane />
       </div>
     </>
   )

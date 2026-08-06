@@ -11,11 +11,10 @@
   color: #aca59a;
 }
 
-.header .panel-label{
+.header .panel-label {
 
   text-transform: uppercase;
   font-weight: 600;
   letter-spacing: 1.5px;
   font-size: 1.1rem;
 }
-

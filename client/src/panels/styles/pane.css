@@ -1,0 +1,21 @@
+.pane {
+  background-color: #0e0f10;
+  border: 2px solid #81786a;
+  border-radius: 10px;
+  color: white;
+}
+
+.header {
+  padding: 20px;
+  background-color: #121314;
+  color: #aca59a;
+}
+
+.header .panel-label{
+
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  font-size: 1.1rem;
+}
+

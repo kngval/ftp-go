@@ -1,11 +1,15 @@
 import './App.css'
-import FTPPane from './panels/FTPPane'
+import LocalPane from './panels/LocalPane'
+import RemotePane from './panels/RemotePane'
 function App() {
 
   return (
     <>
       <div className='main'>
-        <FTPPane />
+        <div className='pane-wrapper'>
+          <LocalPane />
+          <RemotePane />
+        </div>
       </div>
     </>
   )

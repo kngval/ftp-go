@@ -6,15 +6,24 @@
 }
 
 .header {
+  display: flex;
   padding: 20px;
-  background-color: #121314;
-  color: #aca59a;
+  background-color: #161619;
+  color: #9898a8;
+}
+.header .icon-label-wrapper {
+  display: flex;
+  gap: 10px;
 }
 
 .header .panel-label {
 
   text-transform: uppercase;
   font-weight: 600;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
   font-size: 1.1rem;
+}
+.header .slash {
+  margin-right: 10px;
+  margin-left: 10px;
 }

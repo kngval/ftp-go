@@ -7,7 +7,7 @@ const RemotePane = () => {
         <span>Remote</span>
       </div>
 
-      <div>qweq</div>
+      <div></div>
 
     </div>
   );

@@ -15,10 +15,11 @@ const ConnectionPane: React.FC = () => {
 const connectionWrapperStyles: React.CSSProperties = {
   color: "White",
   display: "flex",
-  justifyContent: "center",
+  // justifyContent: "center",
 };
 
 const connectionGridStyle: React.CSSProperties = {
+  width:"100%",
   display: "grid",
   gridTemplateColumns: "1fr 1fr 1fr 1fr",
   gap: "5px"

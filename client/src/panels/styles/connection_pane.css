@@ -2,9 +2,16 @@
 .connection-grid div {
   display: flex;
   align-items: center;
-  padding: 5px 15px;
+  padding: 10px 15px;
   border: 1px solid #1e1e24;
   border-radius: 5px;
 }
+.connection-grid .con-div {
+  width: 100px;
+}
+.connection-grid .address_field {
+ max-width: 2000px; 
+}
+
 
 

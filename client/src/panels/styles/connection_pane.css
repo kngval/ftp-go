@@ -6,12 +6,20 @@
   border: 1px solid #1e1e24;
   border-radius: 5px;
 }
-.connection-grid .con-div {
-  width: 100px;
+.connection-grid .con-div,.connect-btn {
+  min-width: 100px;
 }
 .connection-grid .address_field {
  max-width: 2000px; 
 }
 
+.connection-grid .connect-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #81786a;
+  color: #1fae54;
+  background-color: #101b16;
+}
 
 

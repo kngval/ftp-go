@@ -6,7 +6,7 @@ const ConnectionPane: React.FC = () => {
         <div className="con-div">FTP</div>
         <div className="address_field">address</div>
         <div className="con-div">password</div>
-        <div className="con-div">Connect</div>
+        <div  className="connect-btn">Disconnect</div>
       </div>
     </div>
   );

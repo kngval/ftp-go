@@ -1,11 +1,18 @@
 .pane {
   background-color: #0e0f10;
-  border: 2px solid #81786a;
-  border-radius: 10px;
+  border: 2px solid #1e1e24;
   color: white;
+  min-height: 500px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+
 }
 
 .header {
+  min-height: 25px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border: 2px solid #81786a;
   display: flex;
   padding: 20px;
   background-color: #161619;

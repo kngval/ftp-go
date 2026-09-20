@@ -61,7 +61,7 @@ void Server::handleClient(int client_socket) {
   HttpResponse httpResponse = handleRequest(request);
 
   std::stringstream response;
-  response << "HTTP/1.1" << httpResponse.statusCode << " " << httpResponse.statusText << "\r\n";
+  response << "HTTP/1.1 " << httpResponse.statusCode << " " << httpResponse.statusText << "\r\n";
   response << "Content-Type: text/plain\r\n";
   response << "Content-Length: " << httpResponse.responseBody.length()
            << "\r\n";
@@ -81,7 +81,7 @@ void Server::handleClient(int client_socket) {
 
 HttpResponse Server::handleRequest(const std::string &request) {
 
-  if (request.find("GET /test") != std::string::npos) {
+  if (request.find("GET /") != std::string::npos) {
     return {200, "OK", "welcome to c++ route"};
   }
   std::cout << "Not found\n";

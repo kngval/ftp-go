@@ -1,6 +1,14 @@
 import "./styles/pane.css";
 import LocalIcon from "../assets/icons/user";
+import { files } from "../mockdata/mockFiles";
+import { useState } from "react";
 const LocalPane = () => {
+  const [currentPath,setCurrentPath] = useState<string>("/");
+  const [items,setItems] = useState<TFtp[]>([]);
+
+  const loadDir = async(item : TFtp) => {
+  }
+
   return (
     <div className="pane">
 
@@ -18,7 +26,17 @@ const LocalPane = () => {
       </div>
 
       {/* Body */}
-      <div></div>
+      <div>
+        {files && files.length > 0 && files.map((file) =>
+          (
+            <div key={file.name}>
+              {file.type == "folder" ? "📁" : "📄"}
+              {file.name}
+            </div>
+          )
+        )
+      }
+      </div>
     </div>
   );
 };

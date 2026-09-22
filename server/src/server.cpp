@@ -51,6 +51,7 @@ void Server::start() {
 }
 
 void Server::handleClient(int client_socket) {
+  std::cout << "Handshake\n";
   char buffer[3000] = {0};
   read(client_socket, buffer, 3000);
 
@@ -58,7 +59,7 @@ void Server::handleClient(int client_socket) {
 
   std::cout << "Request : \n" << request << '\n';
 
-  HttpResponse httpResponse = handleRequest(request);
+  HttpResponse httpResponse = handleRequest(request,client_socket);
 
   std::stringstream response;
   response << "HTTP/1.1 " << httpResponse.statusCode << " " << httpResponse.statusText << "\r\n";
@@ -79,11 +80,14 @@ void Server::handleClient(int client_socket) {
   close(client_socket);
 };
 
-HttpResponse Server::handleRequest(const std::string &request) {
+HttpResponse Server::handleRequest(const std::string &request,int client_socket) {
 
   if (request.find("GET /") != std::string::npos) {
     return {200, "OK", "welcome to c++ route"};
   }
   std::cout << "Not found\n";
   return {404, "Not Found", "bruh"};
+
+  if(request.find("GET /disconnect") != std::string::npos){
+  }
 }

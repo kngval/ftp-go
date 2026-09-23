@@ -59,7 +59,7 @@ void Server::handleClient(int client_socket) {
 
   std::cout << "Request : \n" << request << '\n';
 
-  HttpResponse httpResponse = handleRequest(request,client_socket);
+  HttpResponse httpResponse = handleRequest(request);
 
   std::stringstream response;
   response << "HTTP/1.1 " << httpResponse.statusCode << " " << httpResponse.statusText << "\r\n";
@@ -77,17 +77,30 @@ void Server::handleClient(int client_socket) {
     std::cerr << "Send failed : " << std::strerror(errno) << '\n';
   }
 
+  if(httpResponse.closeConnection == true){
+    shutdown(client_socket,SHUT_RDWR);
+  }
+
   close(client_socket);
 };
 
-HttpResponse Server::handleRequest(const std::string &request,int client_socket) {
+HttpResponse Server::handleRequest(const std::string &request) {
+  //parsing method (GET,POST, etc..) || path (/login) || http ver (1.1)
+  std::istringstream iss(request);
+  std::string method,path,version;
+  iss >> method >> path >> version;
 
-  if (request.find("GET /") != std::string::npos) {
-    return {200, "OK", "welcome to c++ route"};
-  }
+  if(method == "GET" && path == "/"){
+    return {200, "OK", "welcome"};
+  };
+
+  if(method == "GET" && path == "/disconnect"){
+
+    return {200, "OK", "Disconnected...", true};
+  };
+
   std::cout << "Not found\n";
   return {404, "Not Found", "bruh"};
 
-  if(request.find("GET /disconnect") != std::string::npos){
-  }
+ 
 }

@@ -10,5 +10,5 @@ public:
 private:
   int port;
   void handleClient(int client_socket);
-  HttpResponse handleRequest(const std::string& request,int client_socket);
+  HttpResponse handleRequest(const std::string& request);
 };

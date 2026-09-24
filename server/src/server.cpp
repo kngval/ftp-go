@@ -90,14 +90,16 @@ HttpResponse Server::handleRequest(const std::string &request) {
   std::string method,path,version;
   iss >> method >> path >> version;
 
+  //GET ROUTES
   if(method == "GET" && path == "/"){
     return {200, "OK", "welcome"};
   };
 
   if(method == "GET" && path == "/disconnect"){
-
     return {200, "OK", "Disconnected...", true};
   };
+
+
 
   std::cout << "Not found\n";
   return {404, "Not Found", "bruh"};

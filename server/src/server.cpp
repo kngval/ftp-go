@@ -77,32 +77,21 @@ void Server::handleClient(int client_socket) {
     std::cerr << "Send failed : " << std::strerror(errno) << '\n';
   }
 
-  if(httpResponse.closeConnection == true){
-    shutdown(client_socket,SHUT_RDWR);
-  }
-
   close(client_socket);
 };
 
 HttpResponse Server::handleRequest(const std::string &request) {
-  //parsing method (GET,POST, etc..) || path (/login) || http ver (1.1)
-  std::istringstream iss(request);
-  std::string method,path,version;
-  iss >> method >> path >> version;
 
-  //GET ROUTES
-  if(method == "GET" && path == "/"){
-    return {200, "OK", "welcome"};
-  };
+    std::istringstream iss(request);
+    std::string method, path, httpVersion;
+    iss >> method >> path >> httpVersion;
 
-  if(method == "GET" && path == "/disconnect"){
-    return {200, "OK", "Disconnected...", true};
-  };
+    if(method == "GET" && path == "/"){
+        return {200,"OK","default / route", false};
+    }
 
+    if(method == "GET" && path == "/disconnect"){
+        return {200,"OK","disconnected", true};
+    }
 
-
-  std::cout << "Not found\n";
-  return {404, "Not Found", "bruh"};
-
- 
 }

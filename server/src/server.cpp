@@ -94,4 +94,5 @@ HttpResponse Server::handleRequest(const std::string &request) {
         return {200,"OK","disconnected", true};
     }
 
+    return {400,"Bad Request","Not Found", false};
 }
